@@ -32,6 +32,9 @@ class Program
                 case 3:
                     gerenciador.RemoverVeiculo();
                     break;
+                case 4:
+                    gerenciador.AdicionarEstoque();
+                    break;
                 default:
                     Console.WriteLine("Opção inválida.");
                     break;

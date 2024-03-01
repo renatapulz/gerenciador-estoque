@@ -19,5 +19,24 @@ class Program
 
         Console.WriteLine(opcaoMsg);
         opcao = Convert.ToInt32(Console.ReadLine());
+        while (opcao != 0)
+        {
+            switch (opcao)
+            {
+                case 1:
+                    gerenciador.AdicionarVeiculo();
+                    break;
+                case 2:
+                    gerenciador.ListarVeiculos();
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+            Console.WriteLine(opcaoMsg);
+            opcao = Convert.ToInt32(Console.ReadLine());
+        }
+        Console.WriteLine("Ok, saindo.");
     }
+
 }

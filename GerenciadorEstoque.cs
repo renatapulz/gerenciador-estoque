@@ -22,7 +22,7 @@ public class GerenciadorEstoque
         novoVeiculo.Estoque = 0;
         Console.WriteLine("\nVeículo adicionado:");
         Console.WriteLine("-------");
-        Console.WriteLine(novoVeiculo.ToString());
+        Console.WriteLine(novoVeiculo.VehicleSummaryInfo());
         size++;
 
         Veiculo[] novoVetor = new Veiculo[veiculos.Length + 1];
@@ -55,4 +55,45 @@ public class GerenciadorEstoque
         }
     }
 
+
+    public void RemoverVeiculo()
+    {
+        if (veiculos.Length != 0)
+        {
+            int removido = 0;
+            int id;
+            Console.WriteLine("Escolha um dos veículos abaixo para excluir:\n");
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine(veiculos[i].VehicleSummaryInfo());
+            }
+            Console.WriteLine("\nDigite o ID do veículo a ser removido:");
+            id = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < size; i++)
+            {
+                if (veiculos[i].Id == id)
+                {
+                    removido = 1;
+                    for (int y = i; y < size - 1; y++)
+                    {
+                        veiculos[y] = veiculos[y + 1];
+                    }
+                    // Diminui em 1 a contagem dos veículos.
+                    size--;
+                    //Redimensiona o vetor para ter um elemento a menos
+                    Array.Resize(ref veiculos, veiculos.Length - 1);
+                    Console.WriteLine($"Veículo ID: {id} REMOVIDO!.\n");
+                    break;
+                }
+            }
+            if (removido == 0)
+            {
+                Console.WriteLine($"Veículo ID: {id} não encontrado.\n");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Sem veículos cadastrados.");
+        }
+    }
 }

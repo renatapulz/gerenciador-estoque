@@ -29,6 +29,9 @@ class Program
                 case 2:
                     gerenciador.ListarVeiculos();
                     break;
+                case 3:
+                    gerenciador.RemoverVeiculo();
+                    break;
                 default:
                     Console.WriteLine("Opção inválida.");
                     break;

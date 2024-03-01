@@ -134,4 +134,48 @@ public class GerenciadorEstoque
             Console.WriteLine("Sem veículos cadastrados.");
         }
     }
+    public void RemoverEstoque()
+    {
+        if (veiculos.Length != 0)
+        {
+            int id;
+            int encontrado = 0;
+            int quantidade;
+            Console.WriteLine("Escolha um dos veículos abaixo para dar saída no estoque:");
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine(veiculos[i].VehicleSummaryInfo());
+            }
+            Console.WriteLine("\nDigite o ID do veículo escolhido:");
+            id = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < size; i++)
+            {
+                if (veiculos[i].Id == id)
+                {
+                    encontrado = 1;
+                    Console.WriteLine($"Quantidade de estoque do veículo {veiculos[i].Nome}: {veiculos[i].Estoque}");
+                    Console.WriteLine("Digite a quantidade a ser retirada do estoque: ");
+                    quantidade = int.Parse(Console.ReadLine());
+
+                    if (quantidade <= veiculos[i].Estoque)
+                    {
+                        veiculos[i].Estoque -= quantidade;
+                        Console.WriteLine($"Estoque atualizado para {veiculos[i].Estoque}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Quantidade informada ({quantidade}) maior que o estoque ({veiculos[i].Estoque}).");
+                    }
+                }
+            }
+            if (encontrado == 0)
+            {
+                Console.WriteLine($"Veículo ID: {id} não encontrado.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Sem veículos cadastrados.");
+        }
+    }
 }

@@ -35,6 +35,9 @@ class Program
                 case 4:
                     gerenciador.AdicionarEstoque();
                     break;
+                case 5:
+                    gerenciador.RemoverEstoque();
+                    break;
                 default:
                     Console.WriteLine("Opção inválida.");
                     break;
